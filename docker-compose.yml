@@ -1,0 +1,19 @@
+version: '3.1'
+
+services:
+  db_va:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345
+    command: 
+      --init-file /init.sql
+    volumes:
+      - data:/var/lib/mysql
+      - ./init.sql:/init.sql
+    expose:
+      - "3306"
+    ports:
+      - "3309:3306"
+
+volumes:
+  data:
